@@ -1,0 +1,23 @@
+docker container ls -a	    Lists all containers (ls only = currentry running)
+docker ps -a                Lists all containers
+docker images	              Lists all images
+docker pull <image>	        Pulls image from a docker registry called docker hub
+docker rm <container-id>	  Removes a container, you can use either container name or id
+docker container prune      Removes all containers
+docker rmi <image-id>	      Removes an image, you can use either image name or id
+docker stop <container-id>	Stops a container, you can use either container name or id
+docker run <image>	        Runs an image creating a container, you can use either image name or id
+docker exec <container-id>	Executes a command inside the container 
+
+
+docker attach --sig-proxy=false looper  Can be exited with ctrl+c
+
+docker exec -it looper bash 
+docker exec -t -i reports-service_swagger-ui_1 sh
+
+docker kill looper  (docker rm --force looper)
+docker rm looper
+
+docker run -d --rm -it --name looper-it ubuntu:16.04 sh -c 'while true; do date; sleep 1; done' (run and remove after exited)
+
+docker run -v $(pwd):/mydir youtube-dl https://imgur.com/JY5tHqr (volume bind mount)

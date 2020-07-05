@@ -1,0 +1,7 @@
+$ docker run -it  --name ex_1.4 execdevopsdockeruh/exec_bash_exercise
+
+$ docker exec -it ex_1.4 bash
+root@afa16d7e4af1:/usr/app# tail -f ./logs.txt
+Sun, 28 Jun 2020 20:44:11 GMT
+Secret message is:
+"Docker is easy"
