@@ -1,19 +1,45 @@
-docker container ls -a	    Lists all containers (ls only = currentry running)
-docker ps -a                Lists all containers
-docker images	              Lists all images
+| docker ps | List all running containers |
+| docker ps -a | List all containers stopped, running |
+| docker stop container-id | Stop the container which is running |
+| docker start container-id | Start the container which is stopped |
+| docker restart container-id | Restart the container which is running |
+| docker port container-id | List port mappings of a specific container |
+| docker rm container-id or name | Remove the stopped container |
+| docker rm -f/--force container-id or name| Remove the running container forcefully |
+| docker pull image-info | Pull the image from docker hub repository |
+| docker exec -it container-name /bin/sh | Connect to linux container and execute commands in container |
+| docker rmi image-id | Remove the docker image |
+| docker logout | Logout from docker hub |
+| docker login -u username -p password | Login to docker hub |
+| docker stats | Display a live stream of container(s) resource usage statistics |
+| docker top container-id or name | Display the running processes of a container |
+| docker version | Show the Docker version information |
+
+
 docker pull <image>	        Pulls image from a docker registry called docker hub
-docker rm <container-id>	  Removes a container, you can use either container name or id
-docker container prune      Removes all containers
-docker rmi <image-id>	      Removes an image, you can use either image name or id
+
+docker container ls -a	    	Lists all containers (ls only = currentry running)
+docker ps -a                	Lists all containers
+docker ps -a -q		List IDs only
+docker images	              	Lists all images
+
 docker stop <container-id>	Stops a container, you can use either container name or id
-docker run <image>	        Runs an image creating a container, you can use either image name or id
+docker run <image>	    	Runs an image creating a container, you can use either image name or id
 docker exec <container-id>	Executes a command inside the container 
-
-
 docker attach --sig-proxy=false looper  Can be exited with ctrl+c
+
+docker rm id1 id2 id3...	Removes a container(s), you can use either container name or id
+docker rm $(docker ps -a -q)	Removes all containers
+docker rmi <image-id>		Removes an image, you can use either image name or id
+docker container prune      	Removes all containers
+docker system prune -a	    	Remove any stopped containers and all unused images (not just dangling images)
+
+
 
 docker exec -it looper bash 
 docker exec -t -i reports-service_swagger-ui_1 sh
+
+file -h /bin/sh
 
 docker kill looper  (docker rm --force looper)
 docker rm looper
