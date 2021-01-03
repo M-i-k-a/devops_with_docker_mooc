@@ -26,7 +26,7 @@ docker images	              	Lists all images
 docker stop <container-id>	Stops a container, you can use either container name or id
 docker run <image>	    	Runs an image creating a container, you can use either image name or id
 docker exec <container-id>	Executes a command inside the container 
-docker attach --sig-proxy=false looper  Can be exited with ctrl+c
+docker attach --sig-proxy=false looper  	Can be exited with ctrl+c
 
 docker rm id1 id2 id3...	Removes a container(s), you can use either container name or id
 docker rm $(docker ps -a -q)	Removes all containers

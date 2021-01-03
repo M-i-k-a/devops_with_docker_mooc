@@ -5,8 +5,7 @@ WORKDIR /mydir
 COPY . .
 RUN npm install
 EXPOSE 5000
-ENV API_URL="http://localhost:8000" 
 CMD ["npm", "start"]
 
 #$ docker build -t frontend-example .
-#$ docker run -it -p 5000:5000 --rm frontend-example
+#$ docker run -p 5000:5000 --rm frontend-example
