@@ -33,6 +33,7 @@ docker rm $(docker ps -a -q)	Removes all containers
 docker rmi <image-id>		Removes an image, you can use either image name or id
 docker container prune      	Removes all containers
 docker system prune -a	    	Remove any stopped containers and all unused images (not just dangling images)
+docker volume prune		Removes all volumes
 
 
 
@@ -50,3 +51,11 @@ docker run -v $(pwd):/mydir youtube-dl https://imgur.com/JY5tHqr (volume bind mo
 
 $ docker build -t yourusername/catnip .
 $ docker run -p 5555:5000 mikakau/catnip
+
+
+DOCKER-COMPOSE
+Image for service back-end was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+
+docker-compose down	Shotdown whole application
+
+

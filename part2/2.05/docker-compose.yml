@@ -9,3 +9,8 @@ services:
         build: backend-example-docker/
         ports: 
             - 8000:8000
+        environment:
+            - REDIS=redis
+            - REDIS_PORT=6379
+    redis: 
+        image: redis

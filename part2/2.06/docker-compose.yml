@@ -1,0 +1,50 @@
+version: '3.5'
+
+services: 
+    db:
+        image: postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_PASSWORD: example
+        container_name: db_redmine
+        volumes:
+            - database:/var/lib/postgresql/data
+    redmine:
+        image: redmine
+        environment:
+            - REDMINE_DB_POSTGRES=db
+            - REDMINE_DB_PASSWORD=example
+        ports:
+            - '9999:3000'
+        volumes:
+            - files:/usr/src/redmine/files
+        depends_on:
+            - db
+    adminer:
+        image: adminer
+        restart: always
+        environment:
+            - ADMINER_DESIGN=galkaev
+        ports:
+            - 8083:8080
+    front-end:
+        build: frontend-example-docker/
+        ports: 
+            - 5000:5000
+    back-end:
+        build: backend-example-docker/
+        ports: 
+            - 8000:8000
+        environment:
+            - REDIS=redis
+            - REDIS_PORT=6379
+            - DB_USERNAME=postgres
+            - DB_PASSWORD=example
+            - DB_NAME=postgres
+            - DB_HOST=db
+    redis: 
+        image: redis
+
+volumes:
+    database:
+    files:
