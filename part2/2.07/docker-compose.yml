@@ -1,0 +1,28 @@
+version: '3.5'
+
+services: 
+    model:
+        build: ml-kurkkumopo-training/
+        volumes:
+            - ./ml-kurkkumopo-training/imgs:/src/imgs
+            - ./ml-kurkkumopo-training/data:/src/data
+            - ./ml-kurkkumopo-training/model:/src/model
+
+    frontend:
+        build: ml-kurkkumopo-frontend/
+        ports: 
+            - 3000:3000
+
+    backend:
+        build: ml-kurkkumopo-backend/
+        ports: 
+            - 5000:5000
+        environment:
+            - REDIS=redis
+        volumes:
+            - ./ml-kurkkumopo-training/model:/src/model
+
+volumes:
+    imgs:
+    data:
+    model:
